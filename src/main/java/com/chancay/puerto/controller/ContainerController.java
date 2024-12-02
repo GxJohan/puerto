@@ -42,6 +42,27 @@ public class ContainerController {
         return containerService.createContainer(container);
     }
 
+    //Método para actualizar contenedor por su id
+    @PutMapping("/{id}")
+    public ResponseEntity<Container> updateContainer
+    (@RequestBody Container container, @PathVariable Integer id){
+        Container cont = containerService.updateContainer(container, id);
+        if (cont != null){
+            return ResponseEntity.ok(cont);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    //Método para eliminar contenedor por su id
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteContenedor
+    (@PathVariable Integer id){
+        containerService.deleteContenedor(id);
+        return ResponseEntity.ok().build();
+    }
+
+
+
 
 
 }
