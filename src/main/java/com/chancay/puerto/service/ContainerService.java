@@ -35,11 +35,20 @@ public class ContainerService {
         Container cont = containerRepository.findById(id).orElse(null);
         if(cont != null){
             //existe el contenedor a editar.
-            
+            cont.setCodigo(container.getCodigo());
+            cont.setOrigen(container.getOrigen());
+            cont.setPeso(container.getPeso());
+            return containerRepository.save(cont);
         }
         return null;
         
     }
+
+    //metodo para eliminar por id
+    public void deleteContenedor(Integer id){
+        containerRepository.deleteById(id);
+    }
+
 
 
 }
